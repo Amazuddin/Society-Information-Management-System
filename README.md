@@ -22,4 +22,4 @@ Frameworks:
   
 Tools:
   1. Visual Studio
-  2. SQL Server Management Studio
+  2. SQL Server Management Studio.
