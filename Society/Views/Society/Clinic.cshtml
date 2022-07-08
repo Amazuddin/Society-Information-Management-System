@@ -1,0 +1,151 @@
+﻿
+@{
+    //Layout = null;
+}
+
+
+    <meta name="viewport" content="width=device-width" />
+<title>Clinic</title>
+<link href="~/Content/cliicstyle.css" rel="stylesheet" />
+<style>
+    .carousel-inner img {
+        width: 100%;
+        height: 550px;
+    }
+</style>
+<script type="text/javascript">
+    $('.carousel').carousel({
+        interval: 1000
+    }) </script>
+<body>
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+        <li data-target="#demo" data-slide-to="3"></li>
+        <li data-target="#demo" data-slide-to="4"></li>
+    </ul>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/Picture/1.jpg" alt="Los Angeles">
+        </div>
+        <div class="carousel-item">
+            <img src="~/Picture/2.jpg" alt="Chicago">
+        </div>
+        <div class="carousel-item">
+            <img src="~/Picture/3.jpg" alt="New York">
+        </div>
+        <div class="carousel-item">
+            <img src="~/Picture/4.jpg" alt="New York">
+        </div>
+        <div class="carousel-item">
+            <img src="~/Picture/5.jpg" alt="New York">
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
+
+<div class="container">
+    <div class="po1">
+        <center>
+            <strong id="po2">Services</strong>
+        </center>
+    </div><br>
+
+    <div class="row">
+
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <a style="text-decoration: none;" href="@Url.Action("DoctorInformation", "Society")">
+                <div class="po3">
+                    <h1 class="rounded-circle po4-img"><i class="fas fa-user-md"></i></h1>
+                    <div class="po5">
+                        <h2>
+                            DOCTORS
+                        </h2>
+
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a style="text-decoration: none;" href="@Url.Action("Appointment", "Society")">
+                <div class="po3">
+                    <h1 class="rounded-circle po4-img"><i class="fas fa-calendar-check"></i></h1>
+                    <div class="po5">
+                        <h2>
+                            APPOINTMENT
+                        </h2>
+
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+   
+</div>
+    
+       
+
+        <!-- gallery -->
+        <div class="gallery-cont text-center pb-5" id="gallery">
+            <div class="container py-xl-5 py-lg-3">
+                <h3 class="title-w3 mb-sm-5 mb-4 text-center text-bl font-weight-bold">Clinic Gallery</h3>
+                <div class="row news-grids text-center no-gutters">
+                    <div class="col-md-4 gal-img">
+                        <a href="#gal1"><img src="~/Picture/mgal1.jpg" alt="Gallery Image" class="img-fluid"></a>
+                    </div>
+                    <div class="col-md-4 gal-img">
+                        <a href="#gal2"><img src="~/Picture/mgal2.jpg" alt="Gallery Image" class="img-fluid"></a>
+                    </div>
+                    <div class="col-md-4 gal-img">
+                        <a href="#gal3"><img src="~/Picture/mgal3.jpg" alt="Gallery Image" class="img-fluid"></a>
+                    </div>
+                </div>
+                <div class="row news-grids text-center no-gutters">
+                    <div class="col-md-4 gal-img">
+                        <a href="#gal4"><img src="~/Picture/mgal4.jpg" alt="Gallery Image" class="img-fluid"></a>
+                    </div>
+                    <div class="col-md-4 gal-img">
+                        <a href="#gal5"><img src="~/Picture/mgal5.jpg" alt="Gallery Image" class="img-fluid"></a>
+                    </div>
+                    <div class="col-md-4 gal-img">
+                        <a href="#gal6"><img src="~/Picture/mgal6.jpg" alt="Gallery Image" class="img-fluid"></a>
+                    </div>
+                </div>
+                <div class="row news-grids text-center no-gutters">
+                    <div class="col-md-4 gal-img">
+                        <a href="#gal7"><img src="~/Picture/mgal7.jpg" alt="Gallery Image" class="img-fluid"></a>
+                    </div>
+                    <div class="col-md-4 gal-img">
+                        <a href="#gal8"><img src="~/Picture/mgal8.jpg" alt="Gallery Image" class="img-fluid"></a>
+                    </div>
+                    <div class="col-md-4 gal-img">
+                        <a href="#gal9"><img src="~/Picture/mgal9.jpg" alt="Gallery Image" class="img-fluid"></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- //gallery -->
+</body>
+@section scripts{
+
+}

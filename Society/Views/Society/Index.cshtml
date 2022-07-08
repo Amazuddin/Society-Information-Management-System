@@ -1,0 +1,224 @@
+﻿
+@{
+    //Layout = null;
+}
+
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+
+
+<link href="~/Content/societystyle.css" rel="stylesheet"/>
+<style>
+    .img-fluid {
+        height: 350px;
+}
+        .services{
+        background: url(../Picture/g1.jpg) center no-repeat fixed;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+    }
+
+    .services h3.title-w3 span {
+        color: #ff7f62;
+    }
+
+    .w3pvtits-services-grids h4 {
+        font-size: 23px;
+        font-weight: 600;
+        color: #000 !important;
+        letter-spacing: .5px;
+    }
+
+    .w3pvtits-services-grids span.ser-icon {
+        font-size: 2em;
+        color: #ff7f62;
+        width: 70px;
+        height: 70px;
+        line-height: 2.2;
+        text-align: center;
+        box-shadow: 7px 4px 5px rgba(0, 0, 0, 0.37);
+        -webkit-box-shadow: 7px 4px 5px rgba(0, 0, 0, 0.37);
+        -moz-box-shadow: 7px 4px 5px rgba(0, 0, 0, 0.37);
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -o-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -moz-border-radius: 50%;
+    }
+
+    .w3pvtits-services-grids {
+        background: #fff;
+        padding: 3em;
+    }
+
+    a.service-btn {
+        color: #fff;
+        font-size: 15px;
+        display: inline-block;
+        letter-spacing: 1px;
+        background: #ff7f62;
+        padding: 10px 16px;
+        border-radius: 0px;
+        -webkit-border-radius: 0px;
+        -o-border-radius: 0px;
+        -ms-border-radius: 0px;
+        -moz-border-radius: 0px;
+    }
+
+        a.service-btn:hover,
+        .home-form-w3ls button:hover {
+            letter-spacing: 2px;
+        }
+
+    /* //what */
+
+    .title-w3 {
+        color: #ff7f62;
+    }
+    .asdf {
+        background-color: white;
+    }
+</style>
+<body>
+<div class="main-w3pvt mian-content-wthree text-center" id="home">
+    <div class="container">
+        <div class="style-banner mx-auto">
+            <h1 class="asdf">
+                <span class="txt-rotate"
+                          data-period="2000"
+                          data-rotate='[ "WELCOME TO OUR SOCIETY!"]'>
+                    </span>
+            </h1>
+            <p>Join With Us</p>
+            <div class="home-form-w3ls mt-5">
+                <!-- form -->
+
+                <button type="submit" class="btn_apt btn">SOCIETY</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- banner bottom -->
+<section class="w3ls-bnrbtm py-5" id="about">
+    <div class="container py-xl-5 py-lg-3">
+        <h3 class="title-w3 mb-md-5 mb-sm-4 mb-2 text-center font-weight-bold">About Us</h3>
+        <div class="row">
+            <div class="col-lg-6 text-center">
+                <img src="~/Picture/soc1.jpeg" alt="about" class="img-fluid mt-4" />
+            </div>
+            <div class="col-lg-6 pr-xl-5 mt-4">
+                <h3 class="title-sub mb-4">Society</h3>
+                <p class="sub-para">
+                    A society is a group of individuals involved in persistent social interaction, or a large social group sharing the same spatial or social territory, typically subject to the same political authority and dominant cultural expectations. Societies are characterized by patterns of relationships (social relations) between individuals who share a distinctive culture and institutions; a given society may be described as the sum total of such relationships among its constituent of members. In the social sciences, a larger society often exhibits stratification or dominance patterns in subgroups. 
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //banner bottom -->
+
+
+    <!-- services -->
+    <div class="services py-5" id="what">
+        <div class="container py-xl-5 py-lg-3">
+            <h3 class="title-w3 mb-xl-5 mb-sm-4 mb-2 text-center text-wh font-weight-bold" style="color: #ff7f62;">Services</h3>
+            <div class="row w3pvtits-services-row text-center">
+                <div class="col-lg-4 serv-w3mk mt-5">
+                    <div class="w3pvtits-services-grids">
+                        <span class="fas fa-building ser-icon" aria-hidden="true"></span>
+                        <h4 class="text-bl my-4">House</h4>
+                        <p class="text-left">Itaque earum rerum hic tenetur asap iente delectus rulla accumsan.</p>
+                        <a class="service-btn mt-xl-5 mt-4 btn" style="text-decoration: none;" href="@Url.Action("HouseRent","Society")">Read More<span class="fa fa-long-arrow-right ml-2"></span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 serv-w3mk mt-5">
+                    <div class="w3pvtits-services-grids">
+                        <span class="fa fa-graduation-cap ser-icon" aria-hidden="true"></span>
+                        <h4 class="text-bl my-4">School</h4>
+                        <p class="text-left">Itaque earum rerum hic tenetur asap iente delectus rulla accumsan.</p>
+                        <a class="service-btn mt-xl-5 mt-4 btn" style="text-decoration: none;" href="@Url.Action("School","Society")">Read More<span class="fa fa-long-arrow-right ml-2"></span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 serv-w3mk mt-5">
+                    <div class="w3pvtits-services-grids">
+                        <span class="fas fa-shopping-cart ser-icon" aria-hidden="true"></span>
+                        <h4 class="text-bl my-4">Supershop</h4>
+                        <p class="text-left">Itaque earum rerum hic tenetur asap iente delectus rulla accumsan.</p>
+                        <a class="service-btn mt-xl-5 mt-4 btn" style="text-decoration: none;" href="@Url.Action("SuperShop","Society")">Read More<span class="fa fa-long-arrow-right ml-2"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //services -->
+</body>
+@section scripts
+{
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script>
+
+        var TxtRotate = function (el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtRotate.prototype.tick = function () {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+            var that = this;
+            var delta = 300 - Math.random() * 100;
+
+            if (this.isDeleting) { delta /= 2; }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+            }
+
+            setTimeout(function () {
+                that.tick();
+            }, delta);
+        };
+
+        window.onload = function () {
+            var elements = document.getElementsByClassName('txt-rotate');
+            for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-rotate');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                    new TxtRotate(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+            document.body.appendChild(css);
+        };
+
+
+    </script>
+}

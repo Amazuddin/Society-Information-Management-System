@@ -1,0 +1,86 @@
+﻿@using Society.Models
+
+@{
+    //Layout = null;
+}
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <style>
+        .am {
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        .ords {
+            text-align: center;
+            padding: 1em;
+            background-color: beige;
+            font-weight: 700;
+            font-size: 30px;
+            color: blue;
+        }
+        #orderlist {
+            text-align: center;
+        }
+        .headdesign {
+            background-color: #9d5656;
+            color: white;
+        }
+    </style>
+<body>
+<div class="container">
+    <p class="ords">Customer Order List</p>
+    <div class="row am">
+
+        <div class="col-md-12">
+            <table class="table table-bordered table-striped table-hover" id="orderlist">
+                <thead class="headdesign">
+                <tr>
+
+                    <th>Customer Name</th>
+                    <th>Mobile</th>
+                    <th>Address</th>
+                    <th>Product Code</th>
+                    <th>Product Amount</th>
+                    <th>Price</th>
+                    <th>TotalPrice</th>
+                    <th>Date</th>
+
+                </tr>
+                </thead>
+                <tbody id="tableBody" class="bodydesign">
+
+                @foreach (Orderview item in Model)
+                {
+                    <tr>
+
+                        <td>@item.CustomerName</td>
+                        <td>@item.Mobile</td>
+                        <td>@item.Address</td>
+                        <td>@item.ProductCode</td>
+                        <td>@item.ProductAmount</td>
+                        <td>@item.Price</td>
+                        <td>@item.TotalPrice</td>
+                        <td>@item.Date</td>
+                    </tr>
+                }
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+</div>
+</body>
+@section scripts
+{
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('#orderlist').DataTable();
+        });
+    </script>
+}

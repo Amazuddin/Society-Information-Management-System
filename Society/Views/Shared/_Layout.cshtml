@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Society</title>
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <nav style="background-color: #34404c;" class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand myclass" href="#">
+            <i style="font-size: 30px;" class="logo"></i>
+            Society Management System
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="menual collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+
+            @if (Session["SocietyId"] == null && Session["AdminId"] == null)
+            {
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link  @ViewBag.Index" href="@Url.Action("Index","Society")">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link  @ViewBag.Login" href="@Url.Action("Login","Authentication")">Login</a>
+                    <a class="nav-item nav-link  @ViewBag.Registration" href="@Url.Action("Registration", "Authentication")">Register</a>
+                </div>
+            }
+          @if (Session["SocietyId"] != null)
+            {
+                 <div class="navbar-nav">
+                    <a class="nav-item nav-link  @ViewBag.Index" href="@Url.Action("Index","Society")">Home <span class="sr-only">(current)</span></a>
+                     <a class="nav-item nav-link @ViewBag.HouseRent " href="@Url.Action("HouseRent", "Society")">House</a>
+                     <a class="nav-item nav-link @ViewBag.SuperShop " href="@Url.Action("SuperShop","Society")">SuperShop</a>
+                     <a class="nav-item nav-link @ViewBag.School" href="@Url.Action("School", "Society")">School</a>
+                     <a class="nav-item nav-link @ViewBag.Clinic" href="@Url.Action("Clinic", "Society")">Clinic</a>
+                     <a class="nav-item nav-link @ViewBag.Security" href="@Url.Action("Security", "Society")">Security</a>
+                     <a class="nav-item nav-link @ViewBag.Purchases" href="@Url.Action("Purchases", "Society")">Purchases</a>
+                     <a class="nav-item nav-link @ViewBag.AppointmentNotification" href="@Url.Action("AppointmentNotification", "Society")">Profile</a>
+                     <a class="nav-item nav-link " href="@Url.Action("Logout", "Authentication")">Logout</a>
+                </div>
+            }
+            @if (Session["AdminId"] != null)
+            {
+                <div class="navbar-nav">
+                <a class="nav-item nav-link @ViewBag.Index" href="@Url.Action("Index", "Society")"><i class="fas fa-home"></i>Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link @ViewBag.DocIndex" href="@Url.Action("DocIndex", "Doctor")">Doctor</a>
+                <a class="nav-item nav-link @ViewBag.HouseIndex" href="@Url.Action("HouseIndex", "House")">House</a>
+                <a class="nav-item nav-link @ViewBag.SecuIndex" href="@Url.Action("SecuIndex", "Security")">Security</a>
+                <a class="nav-item nav-link @ViewBag.CustomersOrderlist" href="@Url.Action("CustomersOrderlist", "Society")">Order</a>
+                <a class="nav-item nav-link @ViewBag.DoctorAppointment" href="@Url.Action("DoctorAppointment", "Society")">Appointment</a>
+                <a class="nav-item nav-link " href="@Url.Action("AdminLogout", "Authentication")">Logout</a>
+                </div>
+            }
+        </div>
+    </nav>
+
+        @RenderBody()
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+
+            <h3>Society</h3>
+
+            <p class="footer-links">
+                We are dedicate to providing the best possible<br> facilities for people.
+            </p>
+
+            <p class="footer-company-name">2020</p>
+        </div>
+
+        <div class="footer-center">
+
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Chaktai Street</span> chaktai, Chittagong</p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+015623489</p>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="#">elegant@gmail.com</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-right">
+
+            <p class="footer-company-about">
+                <span>About the company</span>
+                Chandrasree Das Gupta.
+            </p>
+
+            <div class="footer-icons">
+
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+
+            </div>
+
+        </div>
+
+    </footer>
+</body>
+</html>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)

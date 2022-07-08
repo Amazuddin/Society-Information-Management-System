@@ -1,0 +1,128 @@
+﻿
+@{
+    //Layout = null;
+}
+<link href="~/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+<style>
+    .error {
+        color: red;
+    }
+
+    .pk {
+        color: white;
+    }
+
+    .warning {
+        text-align: center;
+        font-size: 10px;
+        background-color: blueviolet;
+    }
+
+    .pk {
+        font-weight: bold;
+        font-size: 40px;
+    }
+    #orderform {
+        /*background-color: #02646f;*/
+        margin-top: 0px;
+    }
+    .chpo {
+        box-shadow: 0px 0px 20px 0px blue;
+        background-color: blueviolet;
+        margin-top: 30px;
+    }
+    .btn {
+        font-weight: bold;
+        width: 150px;
+        height: 50px;
+        font-size: 20px;
+    }
+        .btn:hover {
+            background-color: #ff4f81;
+            border-color: #ff4f81;
+        }
+    .cp {
+        height: 50px;
+    }
+    .co {
+        color: #e44f4f;
+        margin-top: 30px;
+        font-size: 70px;
+        background-color: white;
+        width: 125px;
+        height: 118px;
+        padding-top: 18px;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 chpo">
+            <center>
+                @if (ViewBag.Yes == '1')
+                {
+                    <div class="warning" id="warningLabel">
+                        <label>Thank You!</label>
+                    </div>
+                }
+               
+            </center>
+            <form  class="text-center  p-5" id="orderform" action="OrderForm" method="POST">
+                <center>
+                    <h1 class="rounded-circle co"><i class="fas fa-shopping-cart"></i></h1>
+                </center>
+                <p class="h4 mb-4 pk">Order Form</p>
+                <input type="text" class="form-control mb-4 cp" placeholder="Product Code" name="ProductCode" value="@ViewBag.Data1">
+
+                <input type="number" class="form-control mb-4 cp" placeholder="Number of Product" name="ProductAmount">
+
+                <input type="text" class="form-control mb-4 cp" placeholder="Price" name="Price" value="@ViewBag.Data2">
+
+                <input class="form-control mb-4 cp" type="text" name="Date" placeholder="Date" id="Date" autocomplete="off">
+                <center>
+                    <button class="btn btn-info btn-block cpb" data-confirm="Are you sure to buy?" type="submit">Buy</button>
+                </center>
+               
+
+            </form>
+        </div>
+
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+@section scripts
+{
+
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("#warningLabel").hide(1000).empty();
+            }, 5000);
+
+            var asiaTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" });
+            var date = new Date(asiaTime);
+            $('#Date').datepicker({
+                startDate: date,
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            jQuery('[data-confirm]').click(function (e) {
+                if (!confirm(jQuery(this).attr("data-confirm"))) {
+                    e.preventDefault();
+                }
+            });
+
+        });
+
+    </script>
+}

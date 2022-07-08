@@ -1,0 +1,186 @@
+﻿
+@{
+    //Layout = null;
+}
+
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <title>DoctorAppointment</title>
+
+    <style>
+        .tdname {
+            font-size: 20px;
+            padding-right: 14px;
+        }
+
+        .tdvalue {
+            width: 237px;
+            border: 2px solid #2c3e50;
+            border-radius: 10px;
+            height: 40px;
+            margin-top: 10px;
+        }
+
+        #tddate {
+            width: 237px;
+            border: 2px solid #2c3e50;
+            border-radius: 10px;
+            height: 40px;
+            margin-top: 10px;
+        }
+
+        .am1 {
+            margin-top: 30px;
+        }
+
+        .up {
+            margin-top: 50px;
+        }
+
+        .but {
+           
+            width: 160px;
+            height: 45px;
+            margin-top: 15px;
+        }
+
+        .appr {
+            background-color: green;
+            color: white;
+            text-align: center;
+            padding-top: 12px;
+        }
+
+        .normal {
+            background-color: #662a6bdb;
+            color: white;
+            text-align: center;
+            padding-top: 12px;
+        }
+
+        .appointmentlist {
+            margin-bottom: 30px;
+        }
+
+        #apprbtn {
+            background: green;
+        }
+        .app {
+            text-align: center;
+            padding: 1em;
+            background-color: beige;
+            font-weight: 700;
+            font-size: 30px;
+            color: blue;
+        }
+        .headdesign1 {
+            background-color: #df5878;
+            color: white;
+        }
+    </style>
+<body>
+<div class="container">
+    <p class="app">Appointmet List</p>
+    <div class="appointmentlist">
+
+        <form action="" method="POST">
+            <center>
+                <table class="up">
+                    <tr>
+                        <td class="tdname">Date:</td>
+                        <td>
+                            <input type="text" class="form-control" id="tddate" placeholder="Date" required="" autocomplete="off"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <center>
+                                <button class="btn btn-primary but" id="searchbtn" style="">Search</button>
+                            </center>
+
+                        </td>
+                    </tr>
+                </table>
+            </center>
+
+        </form>
+        <div class="row am1">
+
+            <div class="col-md-12 design">
+                <table class="table table-bordered table-striped table-hover" id="apptable">
+                    <thead class="headdesign1">
+                    <tr>
+                        <th>Serial No</th>
+                        <th>Patient Name</th>
+                        <th>Doctor Name</th>
+                        <th>Specialist</th>
+                        <th>Degree</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+@section scripts
+{
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('#apptable').DataTable();
+            var asiaTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" });
+            var date = new Date(asiaTime);
+            $('#tddate').datepicker({
+                startDate: date,
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            $('#searchbtn').on('click', function () {
+                table.clear();
+                var date = $('#tddate').val();
+                var serialNo = 1;
+                var json = { date: date };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetAppointments", "Society")',
+                    contentType: 'application/json',
+                    data: JSON.stringify(json),
+                    success: function (response) {
+
+                        $.each(response, function (key, value) {
+                            table.row.add([
+                                serialNo,
+                                value.PatientName,
+                                value.DoctorName,
+                                value.Specialist,
+                                value.Designation
+                            ]).draw(false);
+                            serialNo += 1;
+                        });
+
+                    }
+
+                });
+                return false;
+            });
+
+
+
+
+        });
+    </script>
+}
+

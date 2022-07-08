@@ -1,0 +1,73 @@
+﻿
+@{
+   // Layout = null;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HouseRentForm</title>
+    <link href="~/Content/Rentdesign.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet"/>
+    <link href="~/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet"/>
+    <style>
+        .warning {
+            background-color: orange;
+            color: black;
+            font-weight: 400;
+            padding: 10px;
+            border-radius: 9px;
+            width: 28em;
+            text-align: center;
+            margin-bottom: 37px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="main-w3l">
+            <h1 class="logo-w3">House Booking Form</h1>
+            <div class="w3layouts-main">
+                <h2><span>Booked now</span></h2>
+                @if (ViewBag.Message != null)
+                {
+                    <div class="warning" id="warningLabel">
+                        <label>Your Boking taken Successfully.</label>
+                    </div>
+                }
+                <form action="HouseRentForm" method="post">
+                    <input placeholder="Full Name" name="Name" type="text" required="">
+                    <input placeholder="Email" name="Email" type="email" required="">
+                    <input placeholder="Phone Number" name="Mobile" type="text" required="">
+                    <input placeholder="Address" name="Address" type="text" required="">
+                    <input placeholder="House Number" name="HouseNumber" type="text" required="">
+                    <input type="text" id="tddate" name="Date" placeholder="Select Date" required="" autocomplete="off" />
+                    <input type="submit" value="Submit" name="Booked">
+                </form>
+            </div>
+          
+
+        </div>
+    </div>
+</body>
+
+@section scripts
+{
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var asiaTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" });
+            var date = new Date(asiaTime);
+            $('#tddate').datepicker({
+                startDate: date,
+                autoclose: true,
+                todayHighlight: true
+            });
+            setTimeout(function () {
+                $("#warningLabel").hide(1000).empty();
+            }, 5000);
+        });
+    </script>
+}

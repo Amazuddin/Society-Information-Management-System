@@ -1,0 +1,131 @@
+﻿@model Society.Models.Doctor
+
+@{
+    //Layout = null;
+}
+
+<style>
+    .design-box {
+        margin: 26px;
+        background-color: #909090;
+        padding: 41px;
+        border: 1px steelblue;
+        border-radius: 25px;
+        color: white;
+    }
+
+    .bbt {
+        width: 26%;
+        margin-left: 3em;
+    }
+    .labd {
+        text-align: center;
+        padding: 1em;
+        background-color: orchid;
+        color: white;
+        font-weight: 700;
+        font-size: 27px;
+        margin-bottom: 25px;
+    }
+    .btn {
+        font-size: 18px;
+        font-weight: 700;
+    }
+</style>
+
+<div class=" container ">
+    <div class="row">
+        <div class="col-md-12 design-box">
+            @using (Html.BeginForm("Edit", "Doctor", FormMethod.Post, new { name = "insertForm", id = "insertForm", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <center>
+                        <h3 class="labd">Update Doctor Information</h3>
+                    </center>
+                    @Html.ValidationSummary(true)
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.SpecialistId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            <select name="SpecialistId" class="form-control">
+                                <option value="">Select Category</option>
+                                @foreach (var v in ViewBag.Doc)
+                                {
+                                    if (v.Id == Model.SpecialistId)
+                                    {
+                                        <option value="@v.Id" selected="selected">@v.Category</option>
+                                        continue;
+                                    }
+                                    else
+                                    {
+                                        <option value="@v.Id">@v.Category</option>
+                                    }
+
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            <input name="Name" class="form-control" type="text" id="Name" value="@Model.Name" />
+                            @*@Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "aa form-control"}})
+                            @Html.ValidationMessageFor(model => model.Name)*@
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.Degree, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            <input name="Degree" class="form-control" type="text" id="Degree" value="@Model.Degree" />
+                            @*@Html.EditorFor(model => model.Degree, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Degree)*@
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            <input type="file" name="Image" />
+                            @Html.HiddenFor(model => model.Image, new { @Name = "pastImage" })
+                            @Html.ValidationMessageFor(model => model.Image)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.Fees, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            <input name="Fees" class="form-control" type="text" id="Fees" value="@Model.Fees" />
+                            @*@Html.EditorFor(model => model.Fees, new {htmlAttributes = new {@class = "aa form-control col-md-6"}})
+                            @Html.ValidationMessageFor(model => model.Fees)*@
+                        </div>
+                    </div>
+                   
+                    <div class="form-group row">
+
+                        <div class="col-md-12" style="position: absolute; text-align: center;">
+                            <input type="submit" value="Edit" style="width: 23%" class="btn btn-primary" />
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("#warningLabel").hide(1000).empty();
+            }, 5000);
+        });
+       
+    </script>
+}

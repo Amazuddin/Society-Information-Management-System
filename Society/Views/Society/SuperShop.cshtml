@@ -1,0 +1,142 @@
+﻿
+@{
+    //Layout = null;
+}
+
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/supershopstyle.css" rel="stylesheet" />
+<style>
+    .carousel-inner img {
+        width: 100%;
+        height: 550px;
+    }
+</style>
+<script type="text/javascript">
+    $('.carousel').carousel({
+        interval: 1000
+    }) </script>
+
+<body>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+            <li data-target="#demo" data-slide-to="3"></li>
+            <li data-target="#demo" data-slide-to="4"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/Picture/sup1.jpg" alt="Los Angeles">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Picture/sup2.jpg" alt="Chicago">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Picture/sup3.jpg" alt="New York">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Picture/sup4.jpg" alt="New York">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Picture/sup5.jpg" alt="New York">
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+<div class="container">
+    <div class="po1">
+        <center>
+            <strong id="po2">Super Shop</strong>
+        </center>
+    </div><br>
+
+    <div class="row">
+
+
+        <div class="col-md-4">
+            <a style="text-decoration: none;" href="@Url.Action("Cloth", "Society")">
+                <div class="po3">
+
+                    <img src="~/Picture/shirt11.png" class=" po4-img">
+                    <div class="po5">
+                        <h2>
+                            CLOTHS
+                        </h2>
+
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a style="text-decoration: none;" href="@Url.Action("Food", "Society")">
+                <div class="po3">
+
+                    <img src="~/Picture/unnamed.png" class=" po4-img">
+                    <div class="po5">
+                        <h2>
+                            FOOD
+                        </h2>
+
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a style="text-decoration: none;" href="@Url.Action("Medicine", "Society")">
+                <div class="po3">
+
+                    <img src="~/Picture/med.png" class=" po4-img">
+                    <div class="po5">
+                        <h2>
+                            MEDICINE
+                        </h2>
+
+                    </div>
+
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+
+
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <a style="text-decoration: none;" href="@Url.Action("Necessery", "Society")">
+                <div class="po3">
+
+                    <img src="~/Picture/veg1.png" class=" po4-img">
+                    <div class="po5">
+                        <h2>
+                            Daily Necessery
+                        </h2>
+
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+</div>
+</body>
+

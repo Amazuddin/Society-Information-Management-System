@@ -1,0 +1,68 @@
+﻿body {
+}
+
+
+/* colors code */
+.text-bl {
+    color: #343a40;
+}
+
+.text-wh {
+    color: #fff;
+}
+
+.text-li {
+    color: #f8f9fa;
+
+}
+
+
+/* banner */
+.mian-content-wthree {
+    background: url(../Picture/society.jpg) no-repeat center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    min-height: 50vw;
+    position: relative;
+    z-index: 1;
+}
+/* banner text */
+.style-banner {
+    padding-top: 18em;
+    max-width: 800px;
+}
+
+.style-banner h3 {
+    font-size: 52px;
+    letter-spacing: 1px;
+}
+
+.style-banner h3 span {
+    color: #ff7f62;
+}
+
+.style-banner p {
+    font-size: 18px;
+    letter-spacing: 4px;
+}
+
+/* //banner text */
+.home-form-w3ls button {
+    background: #ff7f62;
+    color: #fff;
+    padding: 13px 40px;
+    margin-top: 2em;
+    border: none;
+    outline: none;
+    letter-spacing: 1px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -o-border-radius: 0;
+    -ms-border-radius: 0;
+    -moz-border-radius: 0;
+}

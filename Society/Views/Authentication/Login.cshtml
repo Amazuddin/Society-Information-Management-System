@@ -1,0 +1,67 @@
+﻿
+@{
+    //Layout = null;
+}
+
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+<link href="~/Content/loginstyle.css" rel="stylesheet" />
+
+<body>
+<div class="main">
+    <div class="main-w3l">
+        <h1 class="logo-w3">Our Society</h1>
+        <div class="w3layouts-main">
+            <h2><span>Login now</span></h2>
+            <form action="Login" method="post" id="login">
+                <input placeholder="User Name or Email" name="Email" type="text" required="">
+                <input placeholder="Password" name="Password" type="password" required="" autocomplete="off">
+                <input type="submit" value="Submit" name="Booked">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+@section scripts
+    {
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            setTimeout(function () {
+                $("#warningLabel").hide(1000).empty();
+            }, 5000);
+
+            $("#login").validate({
+
+                rules: {
+                    Email: {
+                        required: true,
+                        email: true
+                    },
+                    Password: {
+                        required: true
+
+                    }
+                },
+                messages: {
+                    Email: {
+                        required: "Please Enter Your Email",
+                        email: "Email is not correct"
+                    },
+                    Password: {
+                        required: "Please Enter Your Password"
+
+                    }
+
+                }
+
+            });
+
+        });
+
+    </script>
+}

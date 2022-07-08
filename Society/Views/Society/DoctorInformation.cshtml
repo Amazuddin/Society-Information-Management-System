@@ -1,0 +1,138 @@
+﻿@using Society.Models
+
+@{
+    //Layout = null;
+    List<Specialist> specialist = ViewBag.Category;
+}
+
+
+
+    <meta name="viewport" content="width=device-width" />
+<title>DoctorInformation</title>
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<style>
+    #SpecialistId {
+        float: right;
+        margin-right: 3px;
+        width: 270px;
+        height: 45px;
+        border: 2px solid #2c3e50;
+    }
+
+    .coldesign {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        height: inherit;
+        text-align: center;
+        padding: 1em;
+        background-color: aliceblue;
+        font-weight: 500;
+        font-size: 20px;
+    }
+
+    .design {
+        border-radius: 20px;
+        margin-top: 50px;
+        height: inherit;
+        margin: 10px;
+        padding: 12px;
+        text-align: center;
+        /*border: 3px solid green;*/
+    }
+    #top {
+        width: 130px;
+        height: 120px;
+    }
+    .dtable {
+        margin-top: 80px;
+        margin-bottom: 130px;
+        box-shadow: 2px 2px 8px black;
+        border-radius: 1px 15px;
+        padding: 25px;
+    }
+    .dd {
+        background-color: brown;
+        color: white;
+    }
+    #na {
+        padding-top: 45px;
+    }
+</style>
+
+<body>
+    <div class="container dtable">
+        <div class="row">
+            <div class="col-md-12 coldesign">
+                <center>
+                    <form method="POST">
+                        <table>
+                            <tr>
+                                <td>
+                                    <select id="SpecialistId" name="Id" >
+                                        <option value="">Select a category</option>
+                                        @foreach (Specialist sp in specialist)
+                                        {
+                                            <option value="@sp.Id">@sp.Category</option>
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </form>
+                </center>
+
+            </div><br>
+        </div>
+        <div class="row">
+            <div class="col-md-12 design">
+                <table class="table table-bordered table-striped table-hover" id="doctortable">
+                    <thead>
+                        <tr class="dd">
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Degree</th>
+                            <th>Fess</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+@section scripts
+{
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('#doctortable').DataTable();
+            $('#SpecialistId').on('change', function () {
+                var deptId = $('#SpecialistId').val();
+                table.clear().draw(false);
+                var json = { id: deptId };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetAllDoctorInfoById", "Society")',
+                    contentType: 'application/json',
+                    data: JSON.stringify(json),
+                    success: function (response) {
+                        $.each(response, function (key, value) {
+                            table.row.add([
+                                "<img src=/" + value.Image + " id=\"top\">",
+                                "<h5 id=\"na\">" + value.Name + "</h5>",
+                                "<h5 id=\"na\">" + value.Degree + "</h5>",
+                                "<h5 id=\"na\">" + value.Fees + "</h5>"
+                            ]).draw(false);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}

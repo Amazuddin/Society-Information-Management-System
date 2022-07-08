@@ -1,0 +1,177 @@
+﻿@model Society.Models.Doctor
+
+@{
+    //Layout = null;
+}
+
+<style>
+    .design-box {
+        margin: 26px;
+        background-color: #909090;
+        padding: 41px;
+        border: 1px steelblue;
+        border-radius: 25px;
+        color: white;
+    }
+
+    .bbt {
+        width: 31%;
+        margin-left: 21em;
+    }
+
+    .warning {
+        font-weight: 400;
+        padding: 10px;
+        border-radius: 9px;
+        width: 28em;
+        text-align: center;
+        box-shadow: -1px 4px 1px 1px #34404c;
+        margin-bottom: 11px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .labd {
+        text-align: center;
+        padding: 1em;
+        background-color: brown;
+        color: white;
+        font-weight: 700;
+        font-size: 27px;
+        margin-bottom: 25px;
+    }
+    .btn {
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        
+        background-color: orange;
+    }
+        .btn:hover {
+            background-color: brown;
+            color: white;
+        }
+</style>
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-md-12 design-box">
+            <center>
+                @if (ViewBag.Message != null)
+                {
+
+                    <div class="warning" style="background-color: #46e86d;" id="warningLabel">
+                        <label>@ViewBag.Message</label>
+                    </div>
+
+                }
+            </center>
+            @using (Html.BeginForm("Create", "Doctor", FormMethod.Post, new { name = "insertForm", id = "insertForm", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <center>
+                        <h3 class="labd">Add Doctor</h3>
+                    </center>
+                    @Html.ValidationSummary(true)
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.SpecialistId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            <select name="SpecialistId" class="form-control">
+                                <option value="">Select Category</option>
+                                @foreach (var v in ViewBag.Doc)
+                                {
+                                    <option value="@v.Id">@v.Category</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            <input name="Name" class="form-control" type="text" id="Name" />
+                            @*@Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Name)*@
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.Degree, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            <input name="Degree" class="form-control" type="text" id="Degree" />
+                            @*@Html.EditorFor(model => model.Degree, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Degree)*@
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.Image, new { Type = "file" })
+                            @Html.ValidationMessageFor(model => model.Image)
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.Fees, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            <input name="Fees" class="form-control" type="text" id="Fees" />
+                            @*@Html.EditorFor(model => model.Degree, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Degree)*@
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <div class="col-md-12" style="position: absolute; text-align: center;">
+                            <input type="submit" value="Submit" style="width: 23%" class="btn" />
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("#warningLabel").hide(1000).empty();
+            }, 5000);
+        });
+        $("#insertForm").validate({
+            rules: {
+                Name: "required",
+                Degree: {
+                    required: true
+                },
+                Fees: {
+                    required: true
+                },
+                SpecialistId: "required",
+                Image: "required"
+            },
+            messages: {
+                Name: "Please Enter a Doctor Name",
+                Image: "Please Select an Image",
+                Degree: {
+                    required: "Please Enter Doctor's Degrees"
+                },
+                Fees: "Please Enter Doctor's Fees",
+                SpecialistId: "Please Select Category"
+            }
+        });
+    </script>
+}

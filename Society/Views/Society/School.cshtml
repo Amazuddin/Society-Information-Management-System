@@ -1,0 +1,163 @@
+﻿
+@{
+    //Layout = null;
+}
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>School</title>
+    <link href="~/Content/schoolstyle.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet"/>
+    <link href="~/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <style>
+        .warning {
+            background-color: orange;
+            color: black;
+            font-weight: 400;
+            padding: 10px;
+            border-radius: 9px;
+            width: 28em;
+            text-align: center;
+            margin-bottom: 37px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-w3pvt mian-content-wthree text-center" id="home">
+        <div class="container">
+            <div class="style-banner mx-auto">
+                <h3 class="text-wh font-weight-bold">Welcome to <span>Our School</span> <br>Best for Education</h3>
+                <p class="mt-3 text-li" id="join">Join the Our School now</p>
+               
+                <!-- form -->
+                <div class="home-form-w3ls mt-5">
+                    <center>
+                        @if (ViewBag.Message != null)
+                        {
+                            <div class="warning" id="warningLabel">
+                                <label>Thank You!.</label>
+                            </div>
+                        }
+                    </center>
+                    <form action="School" method="post">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="Name" placeholder="Student's Name"
+                                           required="">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="Address" placeholder="Address"
+                                           required="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="Mobile" placeholder="Mobile Number"
+                                           required="">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" id="tddate" name="Date" placeholder="Date" required="" autocomplete="off"/>
+
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn_apt btn">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- banner bottom -->
+    <section class="w3ls-bnrbtm py-5" id="about">
+        <div class="container py-xl-5 py-lg-3">
+            <h3 class="title-w3 mb-md-5 mb-sm-4 mb-2 text-center font-weight-bold">About Us</h3>
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="~/Picture/about.jpg" alt="about" class="img-fluid mt-4" />
+                </div>
+                <div class="col-lg-6 pr-xl-5 mt-4">
+                    <h3 class="title-sub mb-4">A School should be a place of Light, of Liberty and of Learning </h3>
+                    <p class="sub-para">
+                        Donec consequat sapien ut leo cursus rhoncus. Nullam dui mi, vulputate ac metus
+                        at, semper
+                        varius orci. Nulla accumsan ac elit in congue. Class aptent taciti sociosqu ad litora torquent
+                        per conubia.
+                    </p>
+                    <p class="sub-para pt-4 mt-4 border-top">
+                        Donec consequat sapien ut leo cursus rhoncus. Nullam dui
+                        mi, vulputate ac metus
+                        at, semper varius orci. Nulla accumsan ac elit in congue. Class aptent taciti sociosqu ad
+                        litora torquent per.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- //banner bottom -->
+
+    <!-- gallery -->
+    <div class="gallery-cont text-center pb-5" id="gallery">
+        <div class="container py-xl-5 py-lg-3">
+            <h3 class="title-w3 mb-sm-5 mb-4 text-center text-bl font-weight-bold">Our Gallery</h3>
+            <div class="row news-grids text-center no-gutters">
+                <div class="col-md-4 gal-img">
+                    <a href="#gal1"><img src="~/Picture/g1.jpg" alt="Gallery Image" class="img-fluid"></a>
+                </div>
+                <div class="col-md-4 gal-img">
+                    <a href="#gal2"><img src="~/Picture/g2.jpg" alt="Gallery Image" class="img-fluid"></a>
+                </div>
+                <div class="col-md-4 gal-img">
+                    <a href="#gal3"><img src="~/Picture/g3.jpg" alt="Gallery Image" class="img-fluid"></a>
+                </div>
+            </div>
+            <div class="row news-grids text-center no-gutters">
+                <div class="col-md-4 gal-img">
+                    <a href="#gal4"><img src="~/Picture/g4.jpg" alt="Gallery Image" class="img-fluid"></a>
+                </div>
+                <div class="col-md-4 gal-img">
+                    <a href="#gal5"><img src="~/Picture/g5.jpg" alt="Gallery Image" class="img-fluid"></a>
+                </div>
+                <div class="col-md-4 gal-img">
+                    <a href="#gal6"><img src="~/Picture/g6.jpg" alt="Gallery Image" class="img-fluid"></a>
+                </div>
+            </div>
+            <div class="row news-grids text-center no-gutters">
+                <div class="col-md-4 gal-img">
+                    <a href="#gal7"><img src="~/Picture/g7.jpg" alt="Gallery Image" class="img-fluid"></a>
+                </div>
+                <div class="col-md-4 gal-img">
+                    <a href="#gal8"><img src="~/Picture/g8.jpg" alt="Gallery Image" class="img-fluid"></a>
+                </div>
+                <div class="col-md-4 gal-img">
+                    <a href="#gal9"><img src="~/Picture/g9.jpg" alt="Gallery Image" class="img-fluid"></a>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <!-- //gallery -->
+</body>
+@section scripts
+{
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var asiaTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" });
+            var date = new Date(asiaTime);
+            $('#tddate').datepicker({
+                startDate: date,
+                autoclose: true,
+                todayHighlight: true
+            });
+            setTimeout(function () {
+                $("#warningLabel").hide(1000).empty();
+            }, 5000);
+        });
+    </script>
+}

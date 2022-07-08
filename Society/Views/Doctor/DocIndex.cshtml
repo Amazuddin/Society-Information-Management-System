@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Society.Models.Doctor>
+
+@{
+    ViewBag.DocIndex = "active";
+}
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<style>
+    .wod {
+        width: 90%;
+        margin-bottom: 2px;
+    }
+
+    .indexdesignbox {
+        margin: 30px 30px 30px 30px;
+        padding: 30px;
+    }
+
+    .newbox {
+        width: 90%;
+    }
+    #datatable {
+        text-align: center;
+    }
+</style>
+
+<div class="indexdesignbox">
+    <table id="datatable" class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Degree)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.SpecialistId)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Fees)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Degree)
+                </td>
+                <td>
+                    <img style="height: 90px; width: 100px;" src="~/@Html.DisplayFor(modelItem => item.Image)">
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.SpecialistId)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fees)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary wod" })
+                    @Html.ActionLink("Add Doctor", "Create", null, new { @class = "newbox btn btn-warning" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+@section scripts{
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            var table = $('#datatable').DataTable();
+        });
+    </script>
+}

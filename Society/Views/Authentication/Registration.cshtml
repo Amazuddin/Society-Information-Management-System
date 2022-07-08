@@ -1,0 +1,127 @@
+﻿@{
+    // Layout = null;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HouseRentForm</title>
+
+    <link href="~/Content/Registrationstyle.css" rel="stylesheet" />
+    <style>
+        .warning {
+            background-color: orange;
+            color: black;
+            font-weight: 400;
+            padding: 10px;
+            border-radius: 9px;
+            width: 20em;
+            text-align: center;
+            margin-bottom: 37px;
+            font-size: 15px;
+        }
+        .lab {
+            color: white;
+        }
+        .cls {
+            margin-bottom: 20px;
+            color: white;
+            font-size: 16px;
+        }
+        .w3layouts-main {
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="main-w3l">
+            <h1 class="logo-w3">Registration Form</h1>
+            <div class="w3layouts-main">
+                <h2><span>Registration now</span></h2>
+                <center>
+                    
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="warning" id="warningLabel">
+                            <label>Thank You!</label>
+                        </div>
+                    }
+                </center>
+                
+                <form action="@Url.Action("Registration","Authentication")" method="post" id="registersociety">
+                    <input placeholder="Full Name" name="Name" id="Name" type="text" required="">
+                    <input placeholder="Email" name="Email" id="Email" type="email" required="">
+                    <input placeholder="Phone Number" name="Mobile" id="Mobile" type="text" required="">
+                    <input placeholder="Address" name="Address" id="Address" type="text" required="">
+                    <input placeholder="Password" name="Password" id="Password" type="text" required="" autocomplete="off">
+                    <input placeholder="Confirm Password" name="ConfirmPassword" id="ConfirmPassword" type="text" required="" autocomplete="off">
+                    <label class="lab">Image: </label><br/>
+                    <input class="cls" type="file" name="Image" id="image" required />
+                    <input class="butt" type="submit" value="Registration">
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+@section scripts
+{
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("#warningLabel").hide(1000).empty();
+            }, 5000);
+
+            $("#registersociety").validate({
+                rules: {
+                    Name: "required",
+                    Email: {
+                        required: true,
+                        email: true
+                    },
+                    Password: {
+                        required: true,
+                        minlength: 6
+                    },
+                    ConfirmPassword: {
+                        minlength: 6,
+                        equalTo: "#Password"
+                    },
+                    Mobile: {
+                        required: true,
+                        number: true
+                    },
+                    Address: "required"
+
+
+                },
+                messages: {
+                    Name: "Please Enter Your Name",
+                   
+                    Mobile: {
+                        required: "Please Enter Your Phone Number",
+                        number: "Number must avoid cahracter"
+                    },
+                    Email: {
+                        required: "Please Enter Your Email",
+                        email: "Email not correct"
+                    },
+                    Password: {
+                        required: "Please Enter Your Password",
+                        minlength: "Minimum length is 6"
+                    },
+                    ConfirmPassword: {
+                        minlength: "Minimum length is 6",
+                        equalTo: "Password not matched"
+                    },
+                    Address: "Please Enter your Address"
+
+                }
+            });
+        });
+    </script>
+}

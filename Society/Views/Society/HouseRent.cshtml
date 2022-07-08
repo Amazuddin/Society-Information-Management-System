@@ -1,0 +1,157 @@
+﻿@using Society.Models
+@{
+    //Layout = null;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HouseRent</title>
+
+    <style>
+        .chandra1 {
+            margin-top: 40px;
+        }
+
+        .chadra2 {
+            height: 500px;
+            margin: 10px;
+            padding: 0px;
+            /*text-align: center;*/
+            /*box-shadow: 1px 1px 0px #888888;*/
+        }
+
+        .chadra2:hover {
+            box-shadow: -1px 2px 18px #526152;
+        }
+        .chadra3-img {
+            width: 100%;
+            height: 310px;
+        }
+
+        .chadra4_info {
+            font-size: 16px;
+            margin-top: 5px;
+            padding: 10px;
+            /*text-align: center;*/
+            color: black;
+        }
+
+   
+        .site-blocks-cover {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            position: relative;
+        }
+
+            .site-blocks-cover, .site-blocks-cover > .container > .row {
+                min-height: 400px;
+                height: calc(80vh);
+            }
+
+                .site-blocks-cover.inner-page, .site-blocks-cover.inner-page .row {
+                    min-height: 300px;
+                    height: 500px;
+                }
+
+        @@media (max-width: 991.98px) {
+            .site-blocks-cover .featured-hero-product {
+                margin-top: 10%;
+                position: absolute;
+            }
+        }
+
+        .site-blocks-cover h1 {
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 30px;
+            /*text-transform: uppercase;*/
+        }
+
+        @@media (min-width: 768px) {
+            .site-blocks-cover h1 {
+                font-size: 70px;
+            }
+        }
+
+        .site-blocks-cover h1:hover {
+            color: green;
+        }
+
+
+        .site-blocks-cover .intro-text {
+            font-size: 16px;
+            color: orangered;
+            line-height: 1.5;
+        }
+
+        .site-blocks-cover.inner-page .site-block-cover-content {
+            margin-top: 20%;
+            text-align: center;
+        }
+
+        @@media (min-width: 768px) {
+            .site-blocks-cover.inner-page .site-block-cover-content {
+                margin-top: 30%;
+            }
+        }
+
+        .site-blocks-cover .sub-title {
+            color: orangered;
+        }
+
+        @@media (max-width: 991.98px) {
+            .site-blocks-cover .img-1 {
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+
+    <div class="site-blocks-cover" style="background-image: url('../Picture/ho1.jpeg');">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+                    <div class=" animated flip site-block-cover-content text-center">
+                        <h1 style="font-weight: bold">House Information</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<div class="container">
+    <div class="row chandra1">
+        @{
+            foreach (House house in Model)
+            {
+                <div class="col-md-4">
+                    <a style="text-decoration: none;" href="@Url.Action("HouseRentForm", "Society")">
+                        <div class="chadra2">
+                            <img src="~/@house.Image" class="chadra3-img">
+                            <div class="chadra4_info">
+                                <h4>House No: @house.HouseNo</h4>
+                                <h5>Information: @house.Information</h5>
+                                <h4>Price: @house.Price</h4>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
+            }
+        }
+    </div>
+</div>
+</body>

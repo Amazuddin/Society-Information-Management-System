@@ -1,0 +1,118 @@
+﻿@model Society.Models.House
+
+@{
+    //Layout = null;
+}
+
+<style>
+    .design-box {
+        margin: 26px;
+        background-color: #909090;
+        padding: 41px;
+        border: 1px steelblue;
+        border-radius: 25px;
+        color: white;
+    }
+
+    .bbt {
+        width: 26%;
+        margin-left: 3em;
+    }
+
+    .labd {
+        text-align: center;
+        padding: 1em;
+        background-color: orchid;
+        color: white;
+        font-weight: 700;
+        font-size: 27px;
+        margin-bottom: 25px;
+    }
+
+    .btn {
+        font-size: 18px;
+        font-weight: 700;
+    }
+</style>
+
+<div class=" container ">
+    <div class="row">
+        <div class="col-md-12 design-box">
+            @using (Html.BeginForm("Edit", "House", FormMethod.Post, new { name = "insertForm", id = "insertForm", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <center>
+                        <h3 class="labd">Update Security Information</h3>
+                    </center>
+                    @Html.ValidationSummary(true)
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.HouseNo, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            <input name="HouseNo" class="form-control" type="text" id="HouseNo" value="@Model.HouseNo" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            <input type="file" name="Image" />
+                            @Html.HiddenFor(model => model.Image, new { @Name = "pastImage" })
+                            @Html.ValidationMessageFor(model => model.Image)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.Information, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            <input name="Information" class="form-control" type="text" id="Information" value="@Model.Information" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"> </div>
+                        @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            <input name="Price" class="form-control" type="text" id="Price" value="@Model.Price" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12" style="position: absolute; text-align: center;">
+                            <input type="submit" value="Edit" style="width: 23%" class="btn btn-primary" />
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("#warningLabel").hide(1000).empty();
+            }, 5000);
+        });
+        $("#insertForm").validate({
+            rules: {
+                HouseNo: "required",
+                Information: {
+                    required: true
+                },
+                Price: "required",
+                Image: "required"
+            },
+            messages: {
+                HouseNo: "Please Enter a House No",
+                Image: "Please Select an Image",
+                Price: {
+                    required: "Please Enter the Price"
+                },
+                Information: "Please Enter the Information"
+            }
+        });
+    </script>
+}
