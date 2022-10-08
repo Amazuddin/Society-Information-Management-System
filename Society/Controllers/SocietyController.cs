@@ -47,7 +47,7 @@ namespace Society.Controllers
                 ctx.SaveChanges();
             }
 
-            ViewBag.Message = '1';
+            ViewBag.Message = "Your Booking taken Successfully.";
 
             return View();
 

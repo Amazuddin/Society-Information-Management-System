@@ -6,6 +6,9 @@ using System.Web;
 using System.Web.Mvc;
 using Society.Context;
 using Society.Models;
+using System.Data;
+using System.Data.Entity;
+using System.Net;
 
 namespace Society.Controllers
 {

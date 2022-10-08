@@ -17,7 +17,7 @@
             font-weight: 400;
             padding: 10px;
             border-radius: 9px;
-            width: 28em;
+            width: 25em;
             text-align: center;
             margin-bottom: 37px;
             font-size: 15px;
@@ -33,7 +33,7 @@
                 @if (ViewBag.Message != null)
                 {
                     <div class="warning" id="warningLabel">
-                        <label>Your Boking taken Successfully.</label>
+                        <label>@ViewBag.Message</label>
                     </div>
                 }
                 <form action="HouseRentForm" method="post">
